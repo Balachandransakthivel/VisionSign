@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 210 40% 96%;
+    --card: 220 20% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 220 20% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 185 100% 50%;
+    --primary-foreground: 220 20% 6%;
+    --secondary: 220 15% 14%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 220 15% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 195 100% 45%;
+    --accent-foreground: 220 20% 6%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 185 100% 50%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 255, 255, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(0, 255, 255, 0.15);
+  }
+
+  .neon-text {
+    color: hsl(185, 100%, 50%);
+    text-shadow: 0 0 20px hsla(185, 100%, 50%, 0.5);
+  }
+
+  .neon-border {
+    border-color: hsl(185, 100%, 50%);
+    box-shadow: 0 0 20px hsla(185, 100%, 50%, 0.2);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 30px hsla(185, 100%, 50%, 0.3), 0 0 60px hsla(185, 100%, 50%, 0.1);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .scan-line {
+    animation: scanLine 3s linear infinite;
+  }
+
+  .pulse-dot {
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes typeText {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.detection-ring {
+  animation: detectionPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes detectionPulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsla(185, 100%, 50%, 0.4); }
+  50% { box-shadow: 0 0 0 12px hsla(185, 100%, 50%, 0); }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, hsl(185, 100%, 50%), hsl(200, 100%, 70%), hsl(185, 100%, 50%));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: hsl(220, 20%, 8%); }
+::-webkit-scrollbar-thumb { background: hsl(185, 100%, 30%); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(185, 100%, 50%); }
