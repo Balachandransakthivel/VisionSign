@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Camera, CameraOff, Volume2, VolumeX, RotateCcw, Globe, Zap, Activity, MousePointerClick } from "lucide-react";
+import { Camera, CameraOff, Volume2, VolumeX, RotateCcw, Globe, Zap, Activity, MousePointerClick, PlayCircle } from "lucide-react";
 import { toast } from "sonner";
 import {
   GESTURE_DATABASE,
@@ -354,7 +354,7 @@ export default function Translator() {
                     </span>
                   ))}
                 </div>
-                <div className="font-display text-lg font-semibold text-foreground">
+                <div className="font-display text-lg font-semibold text-foreground mb-3">
                   {detection.sentence
                     .slice(-5)
                     .map((g) => {
@@ -363,6 +363,22 @@ export default function Translator() {
                     })
                     .join(" ")}
                 </div>
+                <button
+                  onClick={() => {
+                    const fullSentence = detection.sentence
+                      .slice(-5)
+                      .map((g) => {
+                        const found = GESTURE_DATABASE.find((x) => x.gesture === g);
+                        return found ? getTranslation(found.text, selectedLang) : g;
+                      })
+                      .join(" ");
+                    speakText(fullSentence);
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/15 border border-primary/30 text-primary text-sm font-semibold hover:bg-primary/25 transition-all active:scale-95"
+                >
+                  <PlayCircle className="w-4 h-4" />
+                  Speak Full Sentence
+                </button>
               </div>
             )}
           </div>

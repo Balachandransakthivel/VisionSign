@@ -5,8 +5,10 @@ import { Menu, X, Hand, Zap } from "lucide-react";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "Translator", path: "/translator" },
+  { label: "Guide", path: "/guide" },
   { label: "History", path: "/history" },
   { label: "Dashboard", path: "/dashboard" },
+  { label: "🚨 Emergency", path: "/emergency" },
 ];
 
 export default function Navbar() {

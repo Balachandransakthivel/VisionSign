@@ -5,6 +5,8 @@ import Home from "@/pages/Home";
 import Translator from "@/pages/Translator";
 import History from "@/pages/History";
 import Dashboard from "@/pages/Dashboard";
+import GestureGuide from "@/pages/GestureGuide";
+import EmergencyMode from "@/pages/EmergencyMode";
 import NotFound from "@/pages/NotFound";
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/translator" element={<Translator />} />
           <Route path="/history" element={<History />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/guide" element={<GestureGuide />} />
+          <Route path="/emergency" element={<EmergencyMode />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
